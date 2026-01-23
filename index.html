@@ -319,6 +319,80 @@ details summary {
     font-size: 30px;
   }
 }
+/* ======================
+   PREMIUM HERO DEPTH
+====================== */
+
+.fintech-hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.fintech-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(100,140,255,.25), transparent 60%),
+    radial-gradient(circle at 80% 10%, rgba(0,255,200,.15), transparent 55%),
+    linear-gradient(180deg,#0b1b3a 0%, #050b18 100%);
+  z-index: 0;
+}
+
+.fintech-header,
+.fintech-hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* Bigger headline */
+
+.fintech-hero-content h2 {
+  font-size: 44px;
+  max-width: 680px;
+}
+
+/* Floating dots texture */
+
+.fintech-hero::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:
+    radial-gradient(rgba(255,255,255,.08) 1px, transparent 1px);
+  background-size: 26px 26px;
+  opacity:.15;
+  z-index:1;
+}
+
+/* Badges row */
+
+.fintech-badges {
+  display:flex;
+  gap:18px;
+  margin-top:24px;
+}
+
+.fintech-badge {
+  padding:12px 18px;
+  border-radius:14px;
+  background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.18);
+  font-size:14px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  backdrop-filter: blur(12px);
+}
+
+/* Desktop width */
+
+@media (min-width: 900px) {
+  .fintech-hero-content {
+    grid-template-columns: 1.2fr .8fr;
+    align-items: center;
+  }
+}
 </style>
 </head>
 <body>
