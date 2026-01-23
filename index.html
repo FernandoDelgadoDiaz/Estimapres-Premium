@@ -103,6 +103,106 @@ body {
   background: white;
   font-weight: 600;
 }
+/* ===== APP LAYOUT ===== */
+
+.wrap {
+  max-width: 1200px;
+  margin: -120px auto 80px;
+  padding: 0 20px;
+  display: grid;
+  gap: 28px;
+}
+
+/* ===== CARDS ===== */
+
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: var(--shadow);
+  color: #0f172a;
+}
+
+.card h2 {
+  margin-top: 0;
+  font-size: 28px;
+}
+
+/* ===== GRID ROWS ===== */
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+/* ===== FORM ===== */
+
+label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 6px;
+  color: #475569;
+}
+
+input {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid #e2e8f0;
+  font-size: 16px;
+  background: white;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--secondary);
+  box-shadow: 0 0 0 3px rgba(34,197,94,.2);
+}
+
+/* ===== BUTTONS ===== */
+
+.card button {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  border: none;
+  color: white;
+  padding: 14px 22px;
+  border-radius: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.card button:hover {
+  opacity: .9;
+}
+
+/* ===== ADMIN ===== */
+
+.admin-block {
+  background: white;
+  border-radius: 16px;
+  padding: 22px;
+  margin-top: 16px;
+  border: 1px solid #e5e7eb;
+}
+
+details summary {
+  cursor: pointer;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+/* ===== MOBILE ===== */
+
+@media (max-width: 720px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+
+  .wrap {
+    margin-top: -60px;
+  }
+}
 </style>
 </head>
 <body>
