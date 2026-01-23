@@ -1,0 +1,10 @@
+{
+  "name": "estimapres",
+  "version": "1.0.0",
+  "private": true,
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  }
+}
+
