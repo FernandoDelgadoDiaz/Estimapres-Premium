@@ -252,93 +252,117 @@ input, select {
 
 </header>
 
-<main class="wrap">
+<main>
 
-  <!-- SIMULADOR -->
-  <section class="card">
-    <h2>Simulador</h2>
-    <div class="row">
-      <div>
-        <label>Monto</label>
-        <input id="simAmount" inputmode="numeric" placeholder="$ 1.000.000" />
-      </div>
-      <div>
-        <label>Meses</label>
-        <input id="simMonths" inputmode="numeric" placeholder="Ej: 12" />
-      </div>
-    </div>
-    <div class="muted" style="margin-top:8px">
-      <span id="lblTna">TNA vigente: —%</span> · <span id="lblDue">Vencimiento: día —</span>
-    </div>
-    <div style="margin-top:12px"><button id="btnSim" class="cta">Simular</button></div>
-    <div id="simResult"></div>
-  </section>
+  <!-- GRID PRINCIPAL -->
+  <div class="main-grid">
 
-  <!-- SOLICITAR -->
-  <section class="card">
-    <h2>Solicitar préstamo</h2>
-    <div class="row">
-      <div><label>Tu nombre</label><input id="bName" placeholder="Juan Pérez" /></div>
-      <div><label>DNI</label><input id="bDni" inputmode="numeric" placeholder="30123456" /></div>
-      <div><label>Email</label><input id="bEmail" type="email" placeholder="tucorreo@mail.com" /></div>
-      <div><label>Teléfono</label><input id="bPhone" inputmode="tel" placeholder="11 2345 6789" /></div>
-      <div><label>alias o CBU/CVU</label><input id="bAlias" placeholder="alias o CBU/CVU" /></div>
-      <div></div>
-    </div>
-    <div class="muted" style="margin:8px 0 12px">Al enviar aceptás ser contactado por EstimaPres.</div>
-    <button id="btnSendReq" class="cta">Enviar solicitud</button>
-  </section>
+    <!-- SIMULADOR -->
+    <section class="card">
+      <h3>Simulador</h3>
+
+      <div class="row">
+        <div>
+          <label>Monto</label>
+          <input id="simAmount" inputmode="numeric" placeholder="$ 1.000.000" />
+        </div>
+        <div>
+          <label>Meses</label>
+          <input id="simMonths" inputmode="numeric" placeholder="Ej: 12" />
+        </div>
+      </div>
+
+      <div class="muted" style="margin-top:8px">
+        <span id="lblTna">TNA vigente: —%</span> ·
+        <span id="lblDue">Vencimiento: día —</span>
+      </div>
+
+      <button id="btnSim" class="primary-btn">Calcular</button>
+
+      <div id="simResult"></div>
+    </section>
+
+    <!-- SOLICITAR -->
+    <section class="card">
+      <h3>Solicitar préstamo</h3>
+
+      <div class="row">
+        <div><label>Tu nombre</label><input id="bName" placeholder="Juan Pérez" /></div>
+        <div><label>DNI</label><input id="bDni" inputmode="numeric" placeholder="30123456" /></div>
+        <div><label>Email</label><input id="bEmail" type="email" placeholder="tucorreo@mail.com" /></div>
+        <div><label>Teléfono</label><input id="bPhone" inputmode="tel" placeholder="11 2345 6789" /></div>
+        <div><label>Alias o CBU/CVU</label><input id="bAlias" placeholder="alias o CBU/CVU" /></div>
+      </div>
+
+      <div class="muted" style="margin:8px 0 12px">
+        Al enviar aceptás ser contactado por EstimaPres.
+      </div>
+
+      <button id="btnSendReq" class="primary-btn">Enviar solicitud</button>
+    </section>
+
+  </div>
 
   <!-- ADMIN -->
-  <section id="admin" class="card" style="display:none">
-    <h2>Panel administrador</h2>
+  <section id="admin" class="section-block" style="display:none">
 
-    <details open class="card" style="padding:16px">
+    <h3>Panel administrador</h3>
+
+    <details open class="section-block">
       <summary class="section-title">Configuración (TNA y vencimiento)</summary>
+
       <div class="row">
         <div><label>TNA %</label><input id="cfgTna" inputmode="numeric" value="120" /></div>
-        <div><label>Vencimiento (día del mes)</label><input id="cfgDue" inputmode="numeric" value="10" /></div>
+        <div><label>Vencimiento</label><input id="cfgDue" inputmode="numeric" value="10" /></div>
       </div>
-      <div style="margin-top:10px"><button id="btnSaveCfg" class="cta">Guardar</button></div>
+
+      <button id="btnSaveCfg" class="primary-btn">Guardar</button>
     </details>
 
-    <details class="card" style="padding:16px">
+    <details class="section-block">
       <summary class="section-title">Solicitudes pendientes</summary>
-      <div class="toolbar"><button id="btnReloadPend" class="btn-outline">Recargar</button></div>
+      <button id="btnReloadPend" class="primary-btn">Recargar</button>
       <div id="listPend"></div>
     </details>
 
-    <details class="card" style="padding:16px">
+    <details class="section-block">
       <summary class="section-title">Preaprobados</summary>
-      <div class="toolbar"><button id="btnReloadPre" class="btn-outline">Recargar</button></div>
+      <button id="btnReloadPre" class="primary-btn">Recargar</button>
       <div id="listPre"></div>
     </details>
 
-    <details open class="card" style="padding:16px">
+    <details open class="section-block">
       <summary class="section-title">Activos</summary>
-      <div class="toolbar"><button id="btnReloadAct" class="btn-outline">Recargar</button></div>
+      <button id="btnReloadAct" class="primary-btn">Recargar</button>
       <div id="listAct"></div>
     </details>
 
-    <details class="card" style="padding:16px">
-      <summary class="section-title">Inactivos (finalizados / incobrables)</summary>
-      <div class="toolbar">
-        <button id="btnTabPaid" class="btn-outline">Cancelados</button>
-        <button id="btnTabCharged" class="btn-outline">Incobrables</button>
-        <button id="btnReloadInact" class="btn-outline">Recargar</button>
-      </div>
+    <details class="section-block">
+      <summary class="section-title">Inactivos</summary>
+      <button id="btnReloadInact" class="primary-btn">Recargar</button>
       <div id="listInact"></div>
     </details>
+
   </section>
 
   <!-- MI PRÉSTAMO -->
-  <section id="myloan" class="card">
-    <h2>Ver mi préstamo</h2>
+  <section id="myloan" class="section-block">
+
+    <h3>Ver mi préstamo</h3>
+
     <div class="row">
-      <div><label>Ingresá tu DNI</label><input id="myDni" inputmode="numeric" placeholder="Ej: 30123456" /></div>
-      <div style="align-self:end"><button id="btnFindMyLoan" class="cta">Consultar</button></div>
+      <div>
+        <label>Ingresá tu DNI</label>
+        <input id="myDni" inputmode="numeric" placeholder="Ej: 30123456" />
+      </div>
+
+      <button id="btnFindMyLoan" class="primary-btn">
+        Consultar
+      </button>
     </div>
+
     <div id="myLoanResult" style="margin-top:12px"></div>
+
   </section>
 
 </main>
