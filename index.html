@@ -5,6 +5,7 @@ o99<!DOCTYPE html>
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>EstimaPres · Préstamos personales</title>
 <link rel="icon" href="assets/ping.png" />
+
 <style>
 
 /* ==============================
@@ -17,8 +18,8 @@ o99<!DOCTYPE html>
 }
 
 body {
-  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  background: linear-gradient(135deg, #dbeafe 0%, #f0f9ff 40%, #e0f2fe 100%);
+  font-family: 'Inter', system-ui, sans-serif;
+  background: linear-gradient(135deg,#dbeafe,#f0f9ff,#e0f2fe);
   color: #0f172a;
 }
 
@@ -28,19 +29,19 @@ body {
 
 .fintech-hero {
   background: linear-gradient(135deg,#2563eb,#1e40af);
-  padding: 48px 24px 80px;
-  border-bottom-left-radius: 40px;
-  border-bottom-right-radius: 40px;
+  padding: 42px 22px 90px;
+  border-bottom-left-radius: 46px;
+  border-bottom-right-radius: 46px;
   color: white;
-  position: relative;
 }
 
 .fintech-header {
+  max-width: 1200px;
+  margin: auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1200px;
-  margin: auto;
+  flex-wrap: wrap;
 }
 
 .fintech-brand {
@@ -55,11 +56,6 @@ body {
   border-radius: 12px;
 }
 
-.fintech-brand h1 {
-  font-size: 28px;
-  font-weight: 700;
-}
-
 .fintech-actions {
   display: flex;
   gap: 12px;
@@ -67,17 +63,17 @@ body {
 }
 
 .fintech-btn {
-  background: linear-gradient(135deg,#22c55e,#16a34a);
   border: none;
   padding: 10px 18px;
-  border-radius: 14px;
+  border-radius: 16px;
   font-weight: 600;
   color: white;
   cursor: pointer;
+  background: linear-gradient(135deg,#22c55e,#16a34a);
 }
 
 .fintech-btn.ghost {
-  background: rgba(255,255,255,.15);
+  background: rgba(255,255,255,.18);
 }
 
 .fintech-btn.danger {
@@ -90,45 +86,44 @@ body {
 
 .fintech-hero-content {
   max-width: 1200px;
-  margin: 50px auto 0;
+  margin: 40px auto 0;
 }
 
 .fintech-hero-content h2 {
   font-size: 42px;
-  line-height: 1.1;
   max-width: 520px;
 }
 
 .fintech-badges {
   display: flex;
-  gap: 14px;
-  margin: 20px 0;
+  gap: 12px;
+  margin: 18px 0;
   flex-wrap: wrap;
 }
 
 .fintech-badge {
   background: rgba(255,255,255,.15);
-  padding: 10px 16px;
+  padding: 8px 16px;
   border-radius: 999px;
   font-size: 14px;
 }
 
 .fintech-bullets {
-  margin-top: 16px;
   list-style: none;
+  margin-top: 16px;
 }
 
 .fintech-bullets li {
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 /* ==============================
    MAIN GRID
 ================================ */
 
-.main-grid {
+.wrap {
   max-width: 1200px;
-  margin: -60px auto 60px;
+  margin: -70px auto 80px;
   padding: 0 20px;
   display: grid;
   grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
@@ -141,76 +136,65 @@ body {
 
 .card {
   background: white;
-  border-radius: 26px;
+  border-radius: 28px;
   padding: 28px;
-  box-shadow: 0 25px 60px rgba(0,0,0,.12);
+  box-shadow: 0 25px 60px rgba(0,0,0,.15);
 }
 
-.card h3 {
+.card h2 {
   font-size: 26px;
   margin-bottom: 18px;
 }
 
 /* ==============================
-   INPUTS
+   FORM
 ================================ */
 
-input, select {
+.row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+  gap: 16px;
+}
+
+input {
   width: 100%;
   padding: 14px 18px;
   border-radius: 14px;
   border: 1px solid #e5e7eb;
-  margin-top: 6px;
-  margin-bottom: 14px;
   font-size: 16px;
 }
 
-/* ==============================
-   PRIMARY BUTTON
-================================ */
-
-.primary-btn {
+.cta {
   background: linear-gradient(135deg,#22c55e,#16a34a);
   color: white;
   border: none;
   padding: 14px 22px;
   border-radius: 18px;
-  font-size: 16px;
   font-weight: 700;
   cursor: pointer;
 }
 
-/* ==============================
-   ACCORDION BLOCKS
-================================ */
-
-.section-block {
+.btn-outline {
+  border: 1px solid #d1d5db;
   background: white;
-  border-radius: 22px;
-  padding: 22px;
-  box-shadow: 0 18px 40px rgba(0,0,0,.1);
-  margin-bottom: 18px;
+  padding: 8px 14px;
+  border-radius: 14px;
+}
+
+.toolbar {
+  margin-bottom: 10px;
 }
 
 /* ==============================
    MOBILE
 ================================ */
 
-@media (max-width: 720px) {
-
-  .fintech-header {
-    flex-direction: column;
-    gap: 18px;
-  }
-
-  .fintech-hero-content h2 {
-    font-size: 34px;
-  }
-
+@media(max-width:720px){
+  .fintech-hero-content h2 {font-size:32px;}
 }
 
 </style>
-</head>
+
 <body>
 
 <header class="fintech-hero">
@@ -218,7 +202,7 @@ input, select {
   <div class="fintech-header">
 
     <div class="fintech-brand">
-      <img src="assets/ping.png" alt="EstimaPres" />
+      <img src="assets/ping.png">
       <h1>EstimaPres</h1>
     </div>
 
@@ -233,140 +217,109 @@ input, select {
 
   <div class="fintech-hero-content">
 
-    <div>
-      <h2>Gestión profesional de préstamos</h2>
-<div class="fintech-badges">
-  <div class="fintech-badge">🛡 SSL Seguro</div>
-  <div class="fintech-badge">🔒 Datos cifrados</div>
-  <div class="fintech-badge">☁ Firebase</div>
-</div>
+    <h2>Gestión profesional de préstamos</h2>
 
-      <ul class="fintech-bullets">
-        <li>✔ Cobro automatizado</li>
-        <li>✔ Historial financiero</li>
-        <li>✔ Seguridad garantizada</li>
-      </ul>
+    <div class="fintech-badges">
+      <div class="fintech-badge">🛡 SSL Seguro</div>
+      <div class="fintech-badge">🔒 Datos cifrados</div>
+      <div class="fintech-badge">☁ Firebase</div>
     </div>
+
+    <ul class="fintech-bullets">
+      <li>✔ Cobro automatizado</li>
+      <li>✔ Historial financiero</li>
+      <li>✔ Seguridad garantizada</li>
+    </ul>
 
   </div>
 
 </header>
 
-<main>
+<main class="wrap">
 
-  <!-- GRID PRINCIPAL -->
-  <div class="main-grid">
+<!-- SIMULADOR -->
+<section class="card">
+<h2>Simulador</h2>
+<div class="row">
+<div>
+<label>Monto</label>
+<input id="simAmount" placeholder="$ 1.000.000">
+</div>
+<div>
+<label>Meses</label>
+<input id="simMonths" placeholder="Ej: 12">
+</div>
+</div>
+<div>
+<span id="lblTna"></span> · <span id="lblDue"></span>
+</div>
+<button id="btnSim" class="cta">Simular</button>
+<div id="simResult"></div>
+</section>
 
-    <!-- SIMULADOR -->
-    <section class="card">
-      <h3>Simulador</h3>
+<!-- SOLICITAR -->
+<section class="card">
+<h2>Solicitar préstamo</h2>
+<div class="row">
+<input id="bName" placeholder="Juan Pérez">
+<input id="bDni" placeholder="30123456">
+<input id="bEmail" placeholder="tucorreo@mail.com">
+<input id="bPhone" placeholder="11 2345 6789">
+<input id="bAlias" placeholder="alias o CBU/CVU">
+</div>
+<button id="btnSendReq" class="cta">Enviar solicitud</button>
+</section>
 
-      <div class="row">
-        <div>
-          <label>Monto</label>
-          <input id="simAmount" inputmode="numeric" placeholder="$ 1.000.000" />
-        </div>
-        <div>
-          <label>Meses</label>
-          <input id="simMonths" inputmode="numeric" placeholder="Ej: 12" />
-        </div>
-      </div>
+<!-- ADMIN -->
+<section id="admin" class="card" style="display:none">
 
-      <div class="muted" style="margin-top:8px">
-        <span id="lblTna">TNA vigente: —%</span> ·
-        <span id="lblDue">Vencimiento: día —</span>
-      </div>
+<h2>Panel administrador</h2>
 
-      <button id="btnSim" class="primary-btn">Calcular</button>
+<details open>
+<summary>Configuración</summary>
+<input id="cfgTna">
+<input id="cfgDue">
+<button id="btnSaveCfg" class="cta">Guardar</button>
+</details>
 
-      <div id="simResult"></div>
-    </section>
+<details>
+<summary>Solicitudes pendientes</summary>
+<button id="btnReloadPend">Recargar</button>
+<div id="listPend"></div>
+</details>
 
-    <!-- SOLICITAR -->
-    <section class="card">
-      <h3>Solicitar préstamo</h3>
+<details>
+<summary>Preaprobados</summary>
+<button id="btnReloadPre">Recargar</button>
+<div id="listPre"></div>
+</details>
 
-      <div class="row">
-        <div><label>Tu nombre</label><input id="bName" placeholder="Juan Pérez" /></div>
-        <div><label>DNI</label><input id="bDni" inputmode="numeric" placeholder="30123456" /></div>
-        <div><label>Email</label><input id="bEmail" type="email" placeholder="tucorreo@mail.com" /></div>
-        <div><label>Teléfono</label><input id="bPhone" inputmode="tel" placeholder="11 2345 6789" /></div>
-        <div><label>Alias o CBU/CVU</label><input id="bAlias" placeholder="alias o CBU/CVU" /></div>
-      </div>
+<details open>
+<summary>Activos</summary>
+<button id="btnReloadAct">Recargar</button>
+<div id="listAct"></div>
+</details>
 
-      <div class="muted" style="margin:8px 0 12px">
-        Al enviar aceptás ser contactado por EstimaPres.
-      </div>
+<details>
+<summary>Inactivos</summary>
+<div id="listInact"></div>
+</details>
 
-      <button id="btnSendReq" class="primary-btn">Enviar solicitud</button>
-    </section>
+</section>
 
-  </div>
+<!-- MI PRESTAMO -->
+<section id="myloan" class="card">
 
-  <!-- ADMIN -->
-  <section id="admin" class="section-block" style="display:none">
+<h2>Ver mi préstamo</h2>
 
-    <h3>Panel administrador</h3>
+<input id="myDni" placeholder="30123456">
+<button id="btnFindMyLoan" class="cta">Consultar</button>
 
-    <details open class="section-block">
-      <summary class="section-title">Configuración (TNA y vencimiento)</summary>
+<div id="myLoanResult"></div>
 
-      <div class="row">
-        <div><label>TNA %</label><input id="cfgTna" inputmode="numeric" value="120" /></div>
-        <div><label>Vencimiento</label><input id="cfgDue" inputmode="numeric" value="10" /></div>
-      </div>
-
-      <button id="btnSaveCfg" class="primary-btn">Guardar</button>
-    </details>
-
-    <details class="section-block">
-      <summary class="section-title">Solicitudes pendientes</summary>
-      <button id="btnReloadPend" class="primary-btn">Recargar</button>
-      <div id="listPend"></div>
-    </details>
-
-    <details class="section-block">
-      <summary class="section-title">Preaprobados</summary>
-      <button id="btnReloadPre" class="primary-btn">Recargar</button>
-      <div id="listPre"></div>
-    </details>
-
-    <details open class="section-block">
-      <summary class="section-title">Activos</summary>
-      <button id="btnReloadAct" class="primary-btn">Recargar</button>
-      <div id="listAct"></div>
-    </details>
-
-    <details class="section-block">
-      <summary class="section-title">Inactivos</summary>
-      <button id="btnReloadInact" class="primary-btn">Recargar</button>
-      <div id="listInact"></div>
-    </details>
-
-  </section>
-
-  <!-- MI PRÉSTAMO -->
-  <section id="myloan" class="section-block">
-
-    <h3>Ver mi préstamo</h3>
-
-    <div class="row">
-      <div>
-        <label>Ingresá tu DNI</label>
-        <input id="myDni" inputmode="numeric" placeholder="Ej: 30123456" />
-      </div>
-
-      <button id="btnFindMyLoan" class="primary-btn">
-        Consultar
-      </button>
-    </div>
-
-    <div id="myLoanResult" style="margin-top:12px"></div>
-
-  </section>
+</section>
 
 </main>
-
 <script type="module">
 /* ================ Firebase ================= */
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
