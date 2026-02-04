@@ -5,120 +5,258 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>EstimaPres · Gestión Fintech</title>
 <link rel="icon" href="assets/ping.png" />
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0b0e14;
-    --card-bg: #161b22;
-    --accent: #2ecc71;
-    --text-main: #ffffff;
+    --bg: #0d1117;
+    --card-bg: rgba(22, 27, 34, 0.7);
+    --accent: #00ff88; /* Verde Neón Fintech */
+    --accent-dark: #00bd65;
+    --text-main: #f0f6fc;
     --text-dim: #8b949e;
+    --border: rgba(255, 255, 255, 0.1);
+    --glass: rgba(255, 255, 255, 0.03);
     --danger: #ff4d4d;
-    --border: rgba(255, 255, 255, 0.05);
   }
 
   * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-  body { margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); color: var(--text-main); }
+  
+  body { 
+    margin: 0; 
+    font-family: 'Plus Jakarta Sans', sans-serif; 
+    background: radial-gradient(circle at top right, #1a1f26, #0d1117); 
+    color: var(--text-main);
+    min-height: 100vh;
+  }
 
-  .hero { background: rgba(11, 14, 20, 0.9); backdrop-filter: blur(12px); padding: 20px 16px; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--border); }
-  .header-top { display: flex; justify-content: space-between; align-items: center; max-width: 900px; margin: 0 auto; }
-  .brand { display: flex; align-items: center; gap: 10px; }
-  .brand img { width: 42px; height: 42px; border-radius: 10px; }
-  .brand h1 { margin: 0; font-size: 22px; font-weight: 800; }
+  /* Header Estilo "Blur" */
+  .hero { 
+    background: rgba(13, 17, 23, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 24px 16px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid var(--border);
+  }
 
-  .actions { display: flex; gap: 8px; overflow-x: auto; padding: 15px 0 5px; max-width: 900px; margin: 0 auto; scrollbar-width: none; }
-  .btn { background: var(--card-bg); border: 1px solid var(--border); color: var(--text-main); padding: 10px 16px; border-radius: 12px; font-size: 13px; font-weight: 600; white-space: nowrap; cursor: pointer; }
+  .header-content { max-width: 500px; margin: 0 auto; }
+
+  .brand { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+  .brand h1 { 
+    margin: 0;
+    font-size: 26px; 
+    font-weight: 800; 
+    background: linear-gradient(to right, #ffffff, var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -1px;
+  }
+  .brand img { width: 40px; height: 40px; border-radius: 12px; box-shadow: 0 0 15px rgba(0, 255, 136, 0.2); }
+
+  /* Navegación con Iconos SVG */
+  .actions { 
+    display: flex; 
+    gap: 12px; 
+    overflow-x: auto;
+    padding-bottom: 5px;
+    scrollbar-width: none;
+  }
+  .actions::-webkit-scrollbar { display: none; }
+
+  .btn { 
+    background: var(--glass);
+    border: 1px solid var(--border);
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 14px;
+    font-weight: 600;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .btn svg { width: 16px; height: 16px; stroke: currentColor; stroke-width: 2.5; fill: none; }
+  .btn:hover { background: rgba(255,255,255,0.08); border-color: var(--accent); }
   .btn.red { color: var(--danger); border-color: rgba(255, 77, 77, 0.2); }
 
-  .wrap { max-width: 700px; margin: 0 auto; padding: 20px 16px 100px; }
-  .card { background: var(--card-bg); border-radius: 24px; padding: 24px; margin-bottom: 20px; border: 1px solid var(--border); }
-  h2 { margin: 0 0 20px; font-size: 20px; font-weight: 800; color: var(--accent); }
+  /* Tarjetas con Profundidad */
+  .wrap { max-width: 500px; margin: 0 auto; padding: 20px 16px 100px; }
 
-  label { font-size: 12px; color: var(--text-dim); display: block; margin-bottom: 6px; font-weight: 600; text-transform: uppercase; }
-  input { width: 100%; background: #0d1117; border: 1px solid var(--border); padding: 14px; border-radius: 14px; color: white; font-size: 16px; margin-bottom: 15px; }
+  .card { 
+    background: var(--card-bg);
+    border-radius: 28px;
+    padding: 28px;
+    margin-bottom: 24px;
+    border: 1px solid var(--border);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  h2 { font-size: 20px; font-weight: 800; margin-top: 0; margin-bottom: 24px; color: var(--accent); letter-spacing: -0.5px; }
+
+  /* Inputs Premium */
+  .field-group { margin-bottom: 20px; }
+  label { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-dim); margin-bottom: 8px; display: block; font-weight: 600; }
   
-  .cta { width: 100%; background: var(--accent); color: #000; border: none; padding: 16px; border-radius: 16px; font-weight: 800; font-size: 16px; cursor: pointer; }
+  input { 
+    width: 100%; 
+    background: rgba(0,0,0,0.3); 
+    border: 1px solid var(--border); 
+    padding: 16px; 
+    border-radius: 18px; 
+    color: #fff; 
+    font-size: 16px; 
+    transition: 0.3s;
+    font-family: inherit;
+  }
+  input:focus { border-color: var(--accent); outline: none; box-shadow: 0 0 20px rgba(0, 255, 136, 0.15); background: rgba(0,0,0,0.4); }
 
-  table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 14px; }
-  th { text-align: left; color: var(--text-dim); padding-bottom: 10px; border-bottom: 1px solid var(--border); }
-  td { padding: 12px 0; border-bottom: 1px solid var(--border); }
+  /* Botón Principal */
+  .cta { 
+    width: 100%; 
+    background: linear-gradient(135deg, var(--accent), var(--accent-dark)); 
+    color: #0d1117; 
+    border: none; 
+    padding: 18px; 
+    border-radius: 20px; 
+    font-weight: 800; 
+    font-size: 15px; 
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(0, 255, 136, 0.3);
+    transition: 0.3s;
+  }
+  .cta:active { transform: scale(0.97); opacity: 0.9; }
 
-  .pill { padding: 4px 10px; border-radius: 8px; font-size: 11px; font-weight: 700; }
-  .pill.ok { background: rgba(46, 204, 113, 0.1); color: var(--accent); }
-  .pill.warn { background: rgba(241, 196, 15, 0.1); color: #f1c40f; }
-  .pill.bad { background: rgba(231, 76, 60, 0.1); color: var(--danger); }
+  /* Tablas de Pago Estilizadas */
+  table { width: 100%; border-spacing: 0 8px; border-collapse: separate; }
+  th { text-align: left; color: var(--text-dim); font-size: 11px; text-transform: uppercase; padding: 0 10px; }
+  td { background: rgba(255,255,255,0.03); padding: 16px 12px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  td:first-child { border-left: 1px solid var(--border); border-radius: 16px 0 0 16px; }
+  td:last-child { border-right: 1px solid var(--border); border-radius: 0 16px 16px 0; }
 
-  .toolbar { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
-  .btn-outline { background: transparent; border: 1px solid var(--border); color: #fff; padding: 8px 12px; border-radius: 8px; cursor: pointer; }
-  .btn-success { background: var(--accent); color: #000; border: none; padding: 8px 12px; border-radius: 8px; font-weight: 700; cursor: pointer; }
-  .btn-danger { background: var(--danger); color: #fff; border: none; padding: 8px 12px; border-radius: 8px; font-weight: 700; cursor: pointer; }
+  .pill { padding: 4px 10px; border-radius: 8px; font-size: 11px; font-weight: 800; text-transform: uppercase; }
+  .pill.warn { color: #f1c40f; background: rgba(241, 196, 15, 0.1); }
+  .pill.ok { color: var(--accent); background: rgba(0, 255, 136, 0.1); }
+
+  .kpi { font-size: 24px; font-weight: 800; color: #fff; margin-bottom: 20px; }
+
+  /* Toolbar Admin */
+  .toolbar { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 15px; }
+  .btn-outline { background: transparent; border: 1px solid var(--border); color: #fff; padding: 10px 14px; border-radius: 12px; cursor: pointer; font-weight: 600; font-size: 13px; }
+  .btn-success { background: var(--accent); color: #0d1117; border: none; padding: 10px 14px; border-radius: 12px; font-weight: 800; cursor: pointer; }
+  .btn-danger { background: var(--danger); color: #fff; border: none; padding: 10px 14px; border-radius: 12px; font-weight: 800; cursor: pointer; }
+
+  details summary { cursor: pointer; font-weight: 700; padding: 10px 0; color: var(--text-dim); }
 </style>
 </head>
 <body>
 
 <header class="hero">
-  <div class="header-top">
+  <div class="header-content">
     <div class="brand">
-      <img src="assets/ping.png" alt="EstimaPres" />
       <h1>PresTar</h1>
+      <img src="assets/ping.png" alt="Logo" onerror="this.style.display='none'" />
     </div>
-  </div>
-  <div class="actions">
-    <button id="btnOpenMyLoan" class="btn">🔎 Ver mi préstamo</button>
-    <button id="btnAdmin" class="btn">🛡️ Admin</button>
-    <button id="btnResetPass" class="btn">🔑 Reset</button>
-    <button id="btnLogout" class="btn red">↪ Salir</button>
+    <div class="actions">
+      <button id="btnOpenMyLoan" class="btn">
+        <svg viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+        Préstamo
+      </button>
+      <button id="btnAdmin" class="btn">
+        <svg viewBox="0 0 24 24"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+        Admin
+      </button>
+      <button id="btnResetPass" class="btn">
+        <svg viewBox="0 0 24 24"><path d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"></path></svg>
+        Llave
+      </button>
+      <button id="btnLogout" class="btn red">
+        <svg viewBox="0 0 24 24"><path d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+        Salir
+      </button>
+    </div>
   </div>
 </header>
 
 <main class="wrap">
+
   <section class="card">
-    <h2>Simulador</h2>
-    <label>Monto</label>
-    <input id="simAmount" inputmode="numeric" placeholder="$ 1.000.000" />
-    <label>Meses</label>
-    <input id="simMonths" inputmode="numeric" placeholder="Ej: 12" />
-    <div style="font-size:12px; color:var(--text-dim); margin-bottom:15px">
-      <span id="lblTna">TNA vigente: —%</span> · <span id="lblDue">Vencimiento: día —</span>
+    <h2>Simulador Inteligente</h2>
+    <div class="field-group">
+      <label>Monto del crédito</label>
+      <input id="simAmount" inputmode="numeric" placeholder="$ 0" />
     </div>
-    <button id="btnSim" class="cta">Simular</button>
+    <div class="field-group">
+      <label>Plazo en meses</label>
+      <input id="simMonths" inputmode="numeric" placeholder="Máx 24" />
+    </div>
+    <div style="display:flex; justify-content:space-between; font-size:11px; color:var(--text-dim); margin-bottom:20px; font-weight:600">
+      <span id="lblTna">TNA: —%</span>
+      <span id="lblDue">CIERRE: DÍA —</span>
+    </div>
+    <button id="btnSim" class="cta">Calcular Cuotas</button>
     <div id="simResult"></div>
   </section>
 
   <section class="card">
-    <h2>Solicitar préstamo</h2>
-    <label>Tu nombre</label><input id="bName" />
-    <label>DNI</label><input id="bDni" inputmode="numeric" />
-    <label>Email</label><input id="bEmail" type="email" />
-    <label>Teléfono</label><input id="bPhone" inputmode="tel" />
-    <label>Alias o CBU/CVU</label><input id="bAlias" />
-    <button id="btnSendReq" class="cta" style="background:#fff; color:#000">Enviar solicitud</button>
+    <h2>Nueva Solicitud</h2>
+    <div class="field-group"><label>Nombre y Apellido</label><input id="bName" /></div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:15px">
+      <div class="field-group"><label>DNI</label><input id="bDni" inputmode="numeric" /></div>
+      <div class="field-group"><label>Teléfono</label><input id="bPhone" inputmode="tel" /></div>
+    </div>
+    <div class="field-group"><label>Email</label><input id="bEmail" type="email" /></div>
+    <div class="field-group"><label>Alias o CBU/CVU</label><input id="bAlias" /></div>
+    <button id="btnSendReq" class="cta" style="background:#fff; color:#0d1117">Enviar Datos</button>
   </section>
 
-  <section id="admin" class="card" style="display:none">
-    <h2>Panel administrador</h2>
-    <details open class="card" style="background:#0d1117"><summary style="cursor:pointer; padding:10px">Configuración</summary>
-      <label>TNA %</label><input id="cfgTna" />
-      <label>Vencimiento</label><input id="cfgDue" />
-      <button id="btnSaveCfg" class="btn-success">Guardar Config</button>
+  <section id="myloan" class="card" style="border: 1px solid var(--accent)">
+    <h2>Centro de Ayuda</h2>
+    <div class="field-group">
+      <label>Consulta por DNI</label>
+      <div style="display:flex; gap:10px">
+        <input id="myDni" inputmode="numeric" placeholder="Ingresá DNI" style="margin-bottom:0" />
+        <button id="btnFindMyLoan" class="btn" style="background:var(--accent); color:#0d1117; border:none">BUSCAR</button>
+      </div>
+    </div>
+    <div id="myLoanResult" style="margin-top:20px"></div>
+  </section>
+
+  <section id="admin" style="display:none">
+    <h2 style="color:#fff; margin-top:40px">Panel de Control</h2>
+    
+    <details class="card" open>
+      <summary>⚙️ Configuración del Sistema</summary>
+      <div class="field-group"><label>TNA %</label><input id="cfgTna" /></div>
+      <div class="field-group"><label>Día de Vencimiento</label><input id="cfgDue" /></div>
+      <button id="btnSaveCfg" class="btn-success" style="width:100%">GUARDAR CAMBIOS</button>
     </details>
-    <details class="card" style="background:#0d1117"><summary style="cursor:pointer; padding:10px">Pendientes</summary><div id="listPend"></div></details>
-    <details class="card" style="background:#0d1117"><summary style="cursor:pointer; padding:10px">Preaprobados</summary><div id="listPre"></div></details>
-    <details open class="card" style="background:#0d1117"><summary style="cursor:pointer; padding:10px">Activos</summary><div id="listAct"></div></details>
+
+    <details class="card"><summary>🕒 Solicitudes Entrantes</summary><div id="listPend"></div></details>
+    <details class="card"><summary>✅ Preaprobados</summary><div id="listPre"></div></details>
+    <details class="card" open><summary>🚀 Cartera Activa</summary><div id="listAct"></div></details>
+    <details class="card">
+      <summary>📂 Histórico</summary>
+      <div class="toolbar">
+        <button id="btnTabPaid" class="btn-outline">Saldados</button>
+        <button id="btnTabCharged" class="btn-outline" style="color:var(--danger)">Morosos</button>
+      </div>
+      <div id="listInact"></div>
+    </details>
   </section>
 
-  <section id="myloan" class="card">
-    <h2>Mi préstamo</h2>
-    <label>DNI</label>
-    <input id="myDni" inputmode="numeric" />
-    <button id="btnFindMyLoan" class="cta">Consultar</button>
-    <div id="myLoanResult"></div>
-  </section>
 </main>
 
 <script type="module">
-/* COPIAR AQUÍ TODO TU BLOQUE <script> ORIGINAL DESDE "import { initializeApp } ..." HASTA EL FINAL */
-/* Tu lógica de Firebase es perfecta, no necesita cambios para funcionar con este diseño */
+/* ================ Firebase y Lógica Original ================= */
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
 import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
 import { getFirestore, collection, doc, getDoc, getDocs, setDoc, addDoc, updateDoc, deleteDoc, serverTimestamp, query, where, orderBy, limit } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
@@ -132,12 +270,10 @@ const firebaseConfig = {
   appId: "1:578516597437:web:f59994b87729aa1cd655d4"
 };
 const ADMIN_EMAIL = "fernandogastondelgado81@gmail.com";
+
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
-
-// ... (Pega aquí el resto de tus funciones: $, fmtMoney, annuityPayment, scheduleRows, loadSettings, etc.)
-// Nota: He mantenido la lógica para que reconozca los nuevos contenedores visuales.
 
 const $ = s => document.querySelector(s);
 const fmtMoney = n => isNaN(n) ? "$ 0" : "$ " + Number(n).toLocaleString("es-AR");
@@ -163,47 +299,126 @@ function scheduleRows(L){
 
 const daysLate = iso => Math.max(0, Math.floor((new Date()-new Date(iso))/(1000*60*60*24)));
 
-let gSettings={tna:null,dueDay:null}; let gUser=null;
+/* ===== Estado / settings ===== */
+let gSettings={tna:null,dueDay:null};
 async function loadSettings(){
   const snap=await getDoc(doc(db,"settings","app"));
   if(snap.exists()) gSettings={...gSettings,...snap.data()};
-  $("#lblTna").textContent="TNA vigente: "+(gSettings.tna??"—")+"%";
-  $("#lblDue").textContent="Vencimiento: día "+(gSettings.dueDay??"—");
+  $("#lblTna").textContent="TNA: "+(gSettings.tna??"—")+"%";
+  $("#lblDue").textContent="DÍA DE PAGO: "+(gSettings.dueDay??"—");
   $("#cfgTna").value=gSettings.tna??"";
   $("#cfgDue").value=gSettings.dueDay??"";
 }
 
 onAuthStateChanged(auth,(u)=>{
-  gUser=u;
-  $("#admin").style.display=(u&&u.email===ADMIN_EMAIL)?"":"none";
+  $("#admin").style.display=(u && u.email===ADMIN_EMAIL) ? "block" : "none";
+  if(u && u.email===ADMIN_EMAIL) loadAllAdmin();
 });
 
 $("#btnAdmin").onclick=async()=>{
   if(!auth.currentUser){
-    const email=prompt("Email admin:", ADMIN_EMAIL)||"";
-    const pass =prompt("Contraseña:")||"";
-    try{ await signInWithEmailAndPassword(auth,email,pass); }catch{ alert("Error"); }
-  }
+    const email=prompt("Admin Email:", ADMIN_EMAIL)||"";
+    const pass =prompt("Password:")||"";
+    try{ await signInWithEmailAndPassword(auth,email,pass); }catch{ alert("Acceso Denegado"); }
+  } else { $("#admin").scrollIntoView({behavior:"smooth"}); }
 };
 
 $("#btnLogout").onclick=()=>signOut(auth);
 
+/* ===== Funciones de Negocio ===== */
 $("#btnSim").onclick=()=>{
   const P=Number(onlyDigits($("#simAmount").value));
   const m=Math.min(24, Number(onlyDigits($("#simMonths").value)));
-  if(!P||!m) return;
+  if(!P || !m) return;
   const c=Math.round(annuityPayment(P,gSettings.tna,m));
   let rows="";
-  for(let i=1;i<=m;i++) rows+=`<tr><td>${i}</td><td>${fmtMoney(c)}</td><td><span class="pill warn">Pendiente</span></td></tr>`;
-  $("#simResult").innerHTML = `<table><thead><tr><th>#</th><th>Cuota</th><th>Estado</th></tr></thead><tbody>${rows}</tbody></table>`;
+  for(let i=1;i<=m;i++){
+    rows+=`<tr><td>${i}</td><td>${fmtMoney(c)}</td><td><span class="pill warn">Pendiente</span></td></tr>`;
+  }
+  $("#simResult").innerHTML = `
+    <div class="card" style="margin-top:24px; padding:20px; background:rgba(0,0,0,0.2)">
+      <div class="kpi" style="color:var(--accent)">Cuota: ${fmtMoney(c)}</div>
+      <table><thead><tr><th>#</th><th>Cuota</th><th>Estado</th></tr></thead><tbody>${rows}</tbody></table>
+    </div>`;
 };
 
 $("#btnSendReq").onclick=async()=>{
   const amount=Number(onlyDigits($("#simAmount").value));
   const months=Number(onlyDigits($("#simMonths").value));
-  const borrower={ name:$("#bName").value, dni:onlyDigits($("#bDni").value), email:$("#bEmail").value, phone:$("#bPhone").value, alias:$("#bAlias").value };
-  await addDoc(collection(db,"loans"), {status:"pending", amount, months, tna:gSettings.tna, dueDay:gSettings.dueDay, borrower, createdAt:nowTS()});
-  alert("Enviado");
+  const borrower={ 
+    name:($("#bName").value||"").trim(), 
+    dni:onlyDigits($("#bDni").value), 
+    email:($("#bEmail").value||"").trim(), 
+    phone:($("#bPhone").value||"").trim(), 
+    alias:($("#bAlias").value||"").trim() 
+  };
+  if(!borrower.name || !borrower.dni){ alert("Datos incompletos"); return; }
+  await addDoc(collection(db,"loans"), {status:"pending", amount, months, tna:gSettings.tna, dueDay:gSettings.dueDay, borrower, createdAt:nowTS(), updatedAt:nowTS()});
+  alert("Solicitud Enviada");
+};
+
+/* ===== Admin Renders (Mantenidos de tu lógica original) ===== */
+function loanHeader(d){
+  const b=d.borrower||{};
+  return `<div style="font-weight:700; font-size:16px">${b.name||"—"}</div>
+          <div style="font-size:12px; color:var(--text-dim)">DNI ${b.dni} · ${fmtMoney(d.amount)} · ${d.months} cuotas</div>`;
+}
+function loanCard(d,actions=""){
+  return `<div class="card" style="padding:20px; margin:12px 0; background:rgba(255,255,255,0.03)">${loanHeader(d)}<div class="toolbar">${actions}</div></div>`;
+}
+
+async function loadPend(){
+  const box=$("#listPend"); box.innerHTML="";
+  const qs=await getDocs(query(collection(db,"loans"), where("status","==","pending"), orderBy("createdAt","desc"), limit(50)));
+  qs.forEach(docu=>{
+    const d={...docu.data(),id:docu.id};
+    box.insertAdjacentHTML("beforeend", loanCard(d, `
+      <button class="btn-success" data-pre="${d.id}">Preaprobar</button>
+      <button class="btn-danger" data-del="${d.id}">Borrar</button>`));
+  });
+  box.querySelectorAll("[data-pre]").forEach(btn=>btn.onclick=async()=>{
+    const id=btn.getAttribute("data-pre");
+    const contractId=Math.random().toString(36).slice(2,10).toUpperCase();
+    await updateDoc(doc(db,"loans",id), {status:"preapproved", contractId, updatedAt:nowTS()});
+    loadAllAdmin();
+  });
+}
+
+async function loadAct(){
+  const box=$("#listAct"); box.innerHTML="";
+  const qs=await getDocs(query(collection(db,"loans"), where("status","==","active"), orderBy("updatedAt","desc"), limit(50)));
+  qs.forEach(docu=>{
+    const d={...docu.data(),id:docu.id};
+    box.insertAdjacentHTML("beforeend", loanCard(d, `
+      <button class="btn-outline" data-cuotas="${d.id}">Cuotas</button>
+      <button class="btn-success" data-paid="${d.id}">Cerrar</button>`));
+  });
+}
+
+async function loadAllAdmin(){ await Promise.all([loadSettings(), loadPend(), loadAct()]); }
+
+/* ===== Consulta de Usuario ===== */
+$("#btnFindMyLoan").onclick=async()=>{
+  const dni=onlyDigits($("#myDni").value);
+  if(!dni) return;
+  $("#myLoanResult").innerHTML="<p style='color:var(--accent)'>Buscando...</p>";
+  const qs=await getDocs(query(collection(db,"loans"), orderBy("createdAt","desc")));
+  let found=null; qs.forEach(d=>{ if(d.data().borrower?.dni===dni) found={id:d.id, ...d.data()}; });
+  
+  if(!found){ $("#myLoanResult").innerHTML="No se encontraron registros."; return; }
+  
+  const paid=found.paidCount||0;
+  $("#myLoanResult").innerHTML = `
+    <div class="card" style="background:rgba(0,255,136,0.05)">
+      <div style="font-weight:800; color:var(--accent)">ESTADO: ${found.status.toUpperCase()}</div>
+      <p style="font-size:13px">Crédito por ${fmtMoney(found.amount)} en ${found.months} cuotas.<br>Progreso: ${paid}/${found.months}</p>
+    </div>`;
+};
+
+/* Formateo de Inputs */
+$("#simAmount").oninput=e=>{
+  const n=onlyDigits(e.target.value);
+  e.target.value=n?("$ "+Number(n).toLocaleString("es-AR")):"";
 };
 
 /* Carga inicial */
